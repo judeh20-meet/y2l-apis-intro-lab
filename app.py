@@ -20,7 +20,8 @@ def movies():
                     "image_url": "https://ksassets.timeincuk.net/wp/uploads/sites/55/2018/02/KXC1W2-920x584.jpg"
                     }
                     """
-    return render_template('movie.html', movie={})
+    parsed_json = json.loads(json_string)
+    return render_template('movie.html', movie= parsed_json)
 
 
 @app.route('/tvshows')
@@ -74,7 +75,14 @@ def dog_breeds():
     Do a GET request to the link above to get all dog breeds and return them
     to them as a list to the user as a bullet pointed list
     """
-    return render_template('dogs.html')
+    response = requests.get("https://dog.ceo/api/breeds/list/all")
+    parsed_content = json.loads(response.content)
+    content = parsed_content["message"]
+    dog_list=[]
+    for i in content:
+        dog_list.append(i)
+        
+    return render_template('dogs.html', dog_breeds = dog_list)
 
 if __name__ == '__main__':
     app.run(debug=True)
