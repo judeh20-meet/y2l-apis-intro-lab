@@ -1,12 +1,18 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
 </head>
 <body>
-<%for i in dog_breeds%>
-<ul> {{i}} </ul>
+	
+<% for i in dog_breeds %>
+
+<% print(i) %>
+<ul> 
+<li> {{(i)}} </li>
+</ul>
+
 <%endfor%>
+
 </body>
 </html>

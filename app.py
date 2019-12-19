@@ -80,7 +80,7 @@ def dog_breeds():
     content = parsed_content["message"]
     dog_list=[]
     for i in content:
-        dog_list.append(i)
+        dog_list.append(i) 
         
     return render_template('dogs.html', dog_breeds = dog_list)
 
